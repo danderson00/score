@@ -1,0 +1,39 @@
+.selectPlayers {
+    clear: both;
+}
+
+.toggleButtons div {
+    float: left;
+    position: relative;
+    margin: 0;
+    width: 50%;
+    padding: 5px 1px;
+    box-sizing: border-box;
+}
+
+.toggleButtons label, .toggleButtons input {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.toggleButtons input[type="radio"] {
+    opacity: 0;
+    z-index: 100;
+}
+
+.toggleButtons input[type="radio"]:checked + label {
+    background: yellow;
+}
+
+.toggleButtons label {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #CCC;
+    cursor: pointer;
+    z-index: 90;
+}

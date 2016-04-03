@@ -1,0 +1,20 @@
+.playerSelected li.selected {
+    max-height: 50px;
+    padding: 10px;
+    border-top: 1px solid #f2f2f2;
+}
+
+.playerSelected li {
+    max-height: 0;
+    padding: 0;
+    border: 0;
+}
+
+.playerSelected .createPlayer {
+    display: none;
+}
+
+.selectPlayer li {
+    transition: max-height 0.5s;
+    transition: padding 0.5s;
+}

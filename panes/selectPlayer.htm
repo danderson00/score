@@ -1,11 +1,11 @@
-<h1 data-bind="text: data.heading"></h1>
-<ul data-bind="foreach: query('player.name', {}).data()">
-    <li data-bind="text: name, click: $root.publish('player.selected', { playerId: playerId, name: name })"></li>
-</ul>
+<div class="selectPlayer">
+    <ul data-bind="foreach: query('player.name').data()">
+        <li data-bind="text: name, click: $root.selectPlayer"></li>
+    </ul>
 
-<h2>Create New</h2>
-<input data-bind="field: 'name'" />
-<input data-bind="field: 'playerId', value: uuid()" type="hidden" />
-<button data-bind="click: publish([{ topic: 'player.name', data: fields }, { topic: 'player.selected', data: fields }])">Create</button>
-
-<button data-bind="click: publish('ui.home')">Home</button>
+    <div class="createPlayer">
+        <h3>Create New Player</h3>
+        <input data-bind="field: 'name'" />
+        <button data-bind="click: publish({ topic: 'player.name', data: { name: fields.name, playerId: uuid() } })">Create</button>
+    </div>
+</div>

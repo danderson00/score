@@ -1,7 +1,7 @@
 require('tribe').register.flow(function (flow) {
     flow.isDistributed()
 
-    flow.startsAt('selectPlayer', { heading: 'Select Player 1' })
+    flow.startsAt('selectPlayers')
 
     flow.topic('player.selected')
         .count()
