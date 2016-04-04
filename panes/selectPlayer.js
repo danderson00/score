@@ -6,7 +6,6 @@ require('tribe').register.model(function (pane) {
             $(event.target).removeClass('selected')
             $(pane.element).removeClass('playerSelected')
             pane.data(undefined)
-
         } else {
             $(event.target).addClass('selected')
             $(pane.element).addClass('playerSelected')

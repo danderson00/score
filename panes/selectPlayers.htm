@@ -1,28 +1,15 @@
 <input type="hidden" data-bind="field: 'playerCount'" value="1" />
+<div data-bind="pane: 'components/optionButtons', data: { values: { 'Single': '1', 'Team': '2' }, value: fields.playerCount }"></div>
 
-<div class="toggleButtons">
-    <div>
-        <input id="single" name="playerCount" type="radio" value="1" data-bind="checked: fields.playerCount" />
-        <label for="single">Single</label>
-    </div>
-
-    <div>
-        <input id="team" name="playerCount" type="radio" value="2" data-bind="checked: fields.playerCount" />
-        <label for="team">Team</label>
+<div data-bind="foreach: [1, 2]">
+    <h1>Select Team <span data-bind="text: $data"></span></h1>
+    <div data-bind="arrayField: 'team' + $data, length: $root.fields.playerCount">
+        <div data-bind="pane: 'selectPlayer', data: value"></div>
     </div>
 </div>
 
-<div class="selectPlayers">
-    <h1>Select Team 1</h1>
-    <div data-bind="arrayField: 'team1', length: fields.playerCount">
-        <div data-bind="pane: 'selectPlayer', data: value"></div>
-    </div>
-
-    <h1>Select Team 2</h1>
-    <div data-bind="arrayField: 'team2', length: fields.playerCount">
-        <div data-bind="pane: 'selectPlayer', data: value"></div>
-    </div>
-
-    <button data-bind="click: publish([{ topic: 'player.selected', data: { playerId: fields.team1 } }, { topic: 'player.selected', data: { playerId: fields.team2 } }])">Start Scoring</button>
-    <button data-bind="click: publish('ui.home')">Home</button>
-</div>
+<button data-bind="click: () => publish([
+    { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
+    { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } }
+])()">Start Scoring</button>
+<button data-bind="click: publish('ui.home')">Home</button>

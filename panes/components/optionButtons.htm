@@ -1,0 +1,9 @@
+<input type="hidden" data-bind="field: 'groupName', value: uuid()" / />
+<div class="optionButtons" data-bind="foreach: Object.keys(data.values)">
+    <div>
+        <input type="hidden" data-bind="field: 'optionId', value: $root.uuid()" / />
+        <input type="radio" data-bind="attr: { name: $root.fields.groupName, id: $root.fields.optionId }, value: $root.data.values[$data], checked: $root.data.value" />
+        <label data-bind="attr: { for: $root.fields.optionId }, text: $data"></label>
+    </div>
+</div>
+<div style="clear: both"></div>

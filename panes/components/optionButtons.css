@@ -1,8 +1,4 @@
-.selectPlayers {
-    clear: both;
-}
-
-.toggleButtons div {
+.optionButtons div {
     float: left;
     position: relative;
     margin: 0;
@@ -11,23 +7,23 @@
     box-sizing: border-box;
 }
 
-.toggleButtons label, .toggleButtons input {
+.optionButtons label, .optionButtons input {
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 }
 
-.toggleButtons input[type="radio"] {
+.optionButtons input[type="radio"] {
     opacity: 0;
     z-index: 100;
 }
 
-.toggleButtons input[type="radio"]:checked + label {
+.optionButtons input[type="radio"]:checked + label {
     background: yellow;
 }
 
-.toggleButtons label {
+.optionButtons label {
     display: block;
     font-size: 1.8em;
     font-weight: bold;
