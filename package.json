@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "node-uuid": "^1.4.7",
     "tribe": "danderson00/tribe"
   }
