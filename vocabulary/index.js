@@ -3,6 +3,7 @@ var equal = require('deep-equal')
 // these are common expressions that can be used in Rx expressions throughout the app
 require('tribe').register.vocabulary({
     'players': e => e.groupBy(x => x.data.playerId),
+    'allPlayers': e => e.groupByEach(x => x.data.playerId),
     'games': e => e.groupBy(x => x.data.gameId),
     'forPlayer': (e, playerId) => e.where(x => equal(x.data.playerId, playerId)),
 
