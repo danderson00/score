@@ -4,7 +4,7 @@
 <div data-bind="foreach: [1, 2]">
     <h1>Select Team <span data-bind="text: $data"></span></h1>
     <div data-bind="arrayField: 'team' + $data, length: $root.fields.playerCount">
-        <div data-bind="pane: 'selectPlayer', data: value"></div>
+        <div data-bind="pane: 'selectPlayer', data: value, scope: { topic: 'player.name' }, resetScope: true"></div>
     </div>
 </div>
 
