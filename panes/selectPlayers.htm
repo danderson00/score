@@ -8,6 +8,16 @@
     </div>
 </div>
 
+<input data-bind="field: 'team1Score'" /> vs
+<input data-bind="field: 'team2Score'" />
+<button data-bind="click: () => publish([
+    { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
+    { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } },
+    { topic: 'point', data: { playerId: fields.team1().map(x => x().playerId), count: fields.team1Score } },
+    { topic: 'point', data: { playerId: fields.team2().map(x => x().playerId), count: fields.team2Score } }
+])()">Record Score</button>
+
+
 <button data-bind="click: () => publish([
     { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
     { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } }
