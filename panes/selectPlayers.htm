@@ -2,7 +2,7 @@
 <div data-bind="pane: 'components/optionButtons', data: { values: { 'Single': '1', 'Team': '2' }, value: fields.playerCount }"></div>
 
 <div data-bind="foreach: [1, 2]">
-    <h1>Select Team <span data-bind="text: $data"></span></h1>
+    <h1>Select Team <span data-bind="text: $data"></span><div data-bind="pane: 'components/createButton', resetScope: true"></div></h1>
     <div data-bind="arrayField: 'team' + $data, length: $root.fields.playerCount">
         <div data-bind="pane: 'selectPlayer', data: value, scope: { topic: 'player.name' }, resetScope: true"></div>
     </div>
