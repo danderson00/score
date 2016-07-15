@@ -1,7 +1,7 @@
 <div data-bind="foreach: envelopes.players()">
-    <button class="score" data-bind="click: $root.publish('point', { playerId: key })">
-        <span data-bind="text: selectedName()"></span><br />
+    <a class="score button" data-bind="click: $root.publish('point', { playerId: key })">
+        <span data-bind="text: selectedName()"></span>
         <span data-bind="text: points()"></span>
-    </button>
+    </a>
 </div>
-<button data-bind="click: publish('ui.home')">Home</button>
+<a class="full button" data-bind="click: publish('ui.home')">Home</button>

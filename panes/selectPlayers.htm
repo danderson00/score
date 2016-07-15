@@ -2,7 +2,10 @@
 <div data-bind="pane: 'components/optionButtons', data: { values: { 'Single': '1', 'Team': '2' }, value: fields.playerCount }"></div>
 
 <div data-bind="foreach: [1, 2]">
-    <h1>Select Team <span data-bind="text: $data"></span><div data-bind="pane: 'components/createButton', resetScope: true"></div></h1>
+    <h1>
+        Select Team <span data-bind="text: $data"></span>
+        <div data-bind="pane: 'components/createButton', data: { idProperty: 'playerId', valueProperty: 'name', topic: 'player.name' }, resetScope: true"></div>
+    </h1>
     <div data-bind="arrayField: 'team' + $data, length: $root.fields.playerCount">
         <div data-bind="pane: 'selectPlayer', data: value, scope: { topic: 'player.name' }, resetScope: true"></div>
     </div>
@@ -10,7 +13,7 @@
 
 <input data-bind="field: 'team1Score'" /> vs
 <input data-bind="field: 'team2Score'" />
-<button data-bind="click: () => publish([
+<a class="full button" data-bind="click: () => publish([
     { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
     { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } },
     { topic: 'points', data: [{ playerId: fields.team1().map(x => x().playerId), count: fields.team1Score },
@@ -18,8 +21,8 @@
 ])()">Record Score</button>
 
 
-<button data-bind="click: () => publish([
+<a class="full button" data-bind="click: () => publish([
     { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
     { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } }
 ])()">Start Scoring</button>
-<button data-bind="click: publish('ui.home')">Home</button>
+<a class="full button" data-bind="click: publish('ui.home')">Home</button>

@@ -10,8 +10,12 @@ require('tribe').register.model(function (pane) {
     }
 
     this.create = () => {
-        pane.pubsub.publish('player.name', { name: this.fields.name(), playerId: this.uuid() }) 
+        var data = {};
+        data[pane.data.valueProperty] = this.fields.value()
+        data[pane.data.idProperty] = this.uuid()
+
+        pane.pubsub.publish('player.name', data) 
         this.toggle()
-        this.fields.name('')
+        this.fields.value('')
     }
 })
