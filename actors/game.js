@@ -9,4 +9,10 @@ require('tribe').register.actor(function (actor) {
         .forEach(player => player.points()
             .when(points => points >= 3 && this.lead() >= 2)
             .then(() => actor.publish('game.won', { playerId: player.key })))
+
+    actor.handles('points', function (data) {
+        data.forEach(x => actor.publish({ topic: 'point', data: x, silent: true }))
+        if(data[0].count > data[1].count) actor.publish('game.won', { playerId: data[0].playerId })        
+        if(data[0].count < data[1].count) actor.publish('game.won', { playerId: data[1].playerId })        
+    })
 })
