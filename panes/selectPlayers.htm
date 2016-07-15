@@ -7,22 +7,22 @@
         <div data-bind="pane: 'components/createButton', data: { idProperty: 'playerId', valueProperty: 'name', topic: 'player.name' }, resetScope: true"></div>
     </h1>
     <div data-bind="arrayField: 'team' + $data, length: $root.fields.playerCount">
-        <div data-bind="pane: 'selectPlayer', data: value, scope: { topic: 'player.name' }, resetScope: true"></div>
+        <div data-bind="pane: 'components/selectList', data: { value: value, itemText: 'name' }, scope: { topic: 'player.name' }, resetScope: true"></div>
     </div>
 </div>
 
-<input data-bind="field: 'team1Score'" /> vs
-<input data-bind="field: 'team2Score'" />
 <a class="full button" data-bind="click: () => publish([
+    { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
+    { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } }
+])()">Point by Point Scoring</a>
+
+<input data-bind="field: 'team1Score'" class="inline" /> vs
+<input data-bind="field: 'team2Score'" class="inline" />
+<a class="button" style="width: 229px" data-bind="click: () => publish([
     { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
     { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } },
     { topic: 'points', data: [{ playerId: fields.team1().map(x => x().playerId), count: fields.team1Score },
                               { playerId: fields.team2().map(x => x().playerId), count: fields.team2Score }] }
 ])()">Record Score</button>
 
-
-<a class="full button" data-bind="click: () => publish([
-    { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
-    { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } }
-])()">Start Scoring</button>
 <a class="full button" data-bind="click: publish('ui.home')">Home</button>

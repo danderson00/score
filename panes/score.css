@@ -1,0 +1,13 @@
+a.button.score {
+    height: 300px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+}
+
+a.button.score > span {
+    display: block;
+    position: relative;
+    top: 110px;
+}
