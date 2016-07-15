@@ -12,17 +12,17 @@
 </div>
 
 <a class="full button" data-bind="click: () => publish([
-    { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
-    { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } }
+    { topic: 'player.selected', data: fields.team1().selectProperties('playerId', 'name') },
+    { topic: 'player.selected', data: fields.team2().selectProperties('playerId', 'name') }
 ])()">Point by Point Scoring</a>
 
 <input data-bind="field: 'team1Score'" class="inline" /> vs
 <input data-bind="field: 'team2Score'" class="inline" />
 <a class="button" style="width: 229px" data-bind="click: () => publish([
-    { topic: 'player.selected', data: { playerId: fields.team1().map(x => x().playerId), name: fields.team1().map(x => x().name) } },
-    { topic: 'player.selected', data: { playerId: fields.team2().map(x => x().playerId), name: fields.team2().map(x => x().name) } },
-    { topic: 'points', data: [{ playerId: fields.team1().map(x => x().playerId), count: fields.team1Score },
-                              { playerId: fields.team2().map(x => x().playerId), count: fields.team2Score }] }
+    { topic: 'player.selected', data: fields.team1().selectProperties('playerId', 'name') },
+    { topic: 'player.selected', data: fields.team2().selectProperties('playerId', 'name') },
+    { topic: 'points', data: [{ playerId: fields.team1().select('playerId'), count: fields.team1Score },
+                              { playerId: fields.team2().select('playerId'), count: fields.team2Score }] }
 ])()">Record Score</button>
 
 <a class="full button" data-bind="click: publish('ui.home')">Home</button>
