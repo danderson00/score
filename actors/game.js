@@ -1,6 +1,4 @@
 require('tribe').register.actor(function (actor) {
-    actor.isDistributed()
-
     this.lead = actor.envelopes.lead().asScalar()
 
     // publish a game.won message when a player has
