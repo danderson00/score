@@ -1,8 +1,8 @@
 require('tribe').register.model(function (pane) {
     this.score = () => {
-        this.fields.teams().forEach(team => publish('player.selected', team()().selectProperties('playerId', 'name'))())
+        this.fields.teams().forEach(team => this.publish('player.selected', team()().selectProperties('playerId', 'name'))())
     }
-    
+
     this.recordScore = () => {
         this.fields.teams().forEach(team => {
             pane.pubsub.publish('player.selected', team()().selectProperties('playerId', 'name'))
