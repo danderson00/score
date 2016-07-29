@@ -3,6 +3,6 @@
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
     "deep-equal": "^1.0.1",
     "node-uuid": "^1.4.7",
-    "tribe": "danderson00/tribe"
+    "tribe": "^0.4.3"
   }
 }
