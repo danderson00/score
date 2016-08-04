@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
+    "d3": "^4.2.1",
     "deep-equal": "^1.0.1",
     "node-uuid": "^1.4.7",
     "tribe": "^0.4.3"

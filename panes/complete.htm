@@ -1,2 +1,3 @@
 <h1><span data-bind="text: envelopes.forPlayer(data.playerId).selectedName()"></span> won!</h1>
+<div data-bind="pane: 'components/graph', data: { groups: envelopes.players(), values: x => x.points() }"></div>
 <a class="full button" data-bind="click: publish('ui.home')">Home</button>
