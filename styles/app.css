@@ -1,11 +1,16 @@
 body {
     padding: 0 10px;
     font: 13.3333px Arial;
+    margin: 0;
+}
+
+.__overlay {
+    padding: 0 10px;    
 }
 
 .content {
     position: relative;
-    top: 20px;
+    top: 30px;
 }
 
 a.button {

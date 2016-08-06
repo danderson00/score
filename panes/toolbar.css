@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 32px;
+    height: 40px;
     border-bottom: 1px solid black;
     background: #3498db;
 }
@@ -29,9 +29,9 @@
     border-radius: 2px;
     background: white;
     background-size: 28px 28px;
-    width: 28px;
-    height: 28px;
-    top: 2px;
+    width: 34px;
+    height: 34px;
+    top: 3px;
     background-position: center;
     margin: 0 10px;
     position: relative;
@@ -44,8 +44,8 @@
     width: 200px;
     margin-left: -100px;
     text-align: center;
-    padding-top: 4px;
-    font-size: 16pt;
+    padding-top: 6px;
+    font-size: 18pt;
     font-weight: bold;
     color: white;
 }
