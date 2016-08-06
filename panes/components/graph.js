@@ -4,13 +4,13 @@ var d3 = require('d3'),
 require('tribe').register.model(function (pane) {    
     var margins = {
             top: 20,
-            right: 20,
+            right: 10,
             bottom: 20,
-            left: 40
+            left: 20
         },
         options = {            		
-            width: (pane.data.width || 1000) - margins.left - margins.right,
-            height: (pane.data.height || 400) - margins.top - margins.bottom,
+            width: (pane.data.width || calculateWidth()) - margins.left - margins.right,
+            height: (pane.data.height || calculateHeight() / 2) - margins.top - margins.bottom,
             colors: pane.data.colors || ['steelblue', 'sandybrown', 'cadetblue', 'chocolate', 'darkcyan', 'darkseagreen', 'goldenrod']
         },
 
@@ -20,7 +20,7 @@ require('tribe').register.model(function (pane) {
         scaling = createScaling() 
         graph = createGraph()
         axes = createAxes()
-        subscribe();
+        subscribe()
     }
 
     function subscribe() {
@@ -118,5 +118,27 @@ require('tribe').register.model(function (pane) {
 
     function drawPath(path, index) {
         path.attr("d", scaling.line(data[index]))
+    }
+
+    function calculateWidth() {
+        var deviceWidth = window.document.documentElement.clientWidth,
+            leftPosition = findLeftPosition(pane.element.parentElement)
+        
+        return deviceWidth - leftPosition * 2
+
+        function findLeftPosition(parent) {
+            if(parent.offsetLeft === -10000) // i.e. we are being rendered - this is hacky and not reliable
+                return findLeftPosition(parent.parentElement)
+            return parent.offsetLeft
+        }
+    }
+
+    function calculateHeight() {
+        var deviceWidth = window.document.documentElement.clientWidth,
+            deviceHeight = window.document.documentElement.clientHeight
+        
+        if(deviceWidth > deviceHeight)
+            return deviceWidth / 4
+        return deviceWidth / 1.5
     }
 })

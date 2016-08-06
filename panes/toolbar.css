@@ -1,0 +1,51 @@
+.toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    border-bottom: 1px solid black;
+    background: #3498db;
+}
+
+.toolbar .left {
+    float: left;
+}
+
+.toolbar .right {
+    float: right;
+}
+
+.toolbar .left button {
+    background-image: url(content/home.png);
+}
+
+.toolbar .right button {
+    background-image: url(content/settings.png);    
+}
+
+.toolbar button {
+    border: 1px solid #2980b9;
+    border-radius: 2px;
+    background: white;
+    background-size: 28px 28px;
+    width: 28px;
+    height: 28px;
+    top: 2px;
+    background-position: center;
+    margin: 0 10px;
+    position: relative;
+}
+
+.toolbar span {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    text-align: center;
+    padding-top: 4px;
+    font-size: 16pt;
+    font-weight: bold;
+    color: white;
+}

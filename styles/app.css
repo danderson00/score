@@ -3,6 +3,11 @@ body {
     font: 13.3333px Arial;
 }
 
+.content {
+    position: relative;
+    top: 20px;
+}
+
 a.button {
     display: inline-block;
     background: #3498db;
