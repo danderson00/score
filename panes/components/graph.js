@@ -14,7 +14,7 @@ require('tribe').register.model(function (pane) {
             colors: pane.data.colors || ['steelblue', 'sandybrown', 'cadetblue', 'chocolate', 'darkcyan', 'darkseagreen', 'goldenrod']
         },
 
-        scaling, graph, axes, paths, data = []
+        scaling, graph, axes, paths = [], data = []
 
     this.paneRendered = function () {
         scaling = createScaling() 
@@ -31,22 +31,30 @@ require('tribe').register.model(function (pane) {
             changes.forEach(function (change) {
                 if(change.status === 'added') {
                     var result = []
+                    data.push(result)
+                    paths.push(createPath(null, paths.length))
+
                     valuesExpression(change.value.underlyingObservable).subscribe(function (value) {
-                        data.forEach(function(x) {
-                            if(x === result)
-                                x.push(value)
-                            else
-                                x.push(x[x.length - 1] || 0)
-                        })
+                        // this is a hacky way to show an "incremental" line graph, i.e. all lines update on each message
+                        if (result.length === 0)
+                            result.push(value)
+                        else
+                            data.forEach(function(x) {
+                                if(x === result)
+                                    x.push(value)
+                                else
+                                    x.push(x[x.length - 1] || 0)
+                            })
+
                         //result.push(value)
                         draw()
                     })
-                    data.push(result)
                 }
             })
         }, null, "arrayChange")
 
-        paths = groups.map(createPath)
+        // we need to either fix knockout-projections or implement our own map function
+        //paths = groups.map(createPath)
     }
 
     var draw = throttle(function () {
@@ -86,7 +94,7 @@ require('tribe').register.model(function (pane) {
     }
         
     function createPath(data, index) {
-        return graph.append("svg:path").attr("class", "line").attr("style", "stroke:" + options.colors[index()])
+        return graph.append("svg:path").attr("class", "line").attr("style", "stroke:" + options.colors[index])
     }
 
     function setScaling() {
@@ -105,7 +113,7 @@ require('tribe').register.model(function (pane) {
     }
 
     function drawPaths() {
-        paths().forEach(drawPath)
+        paths.forEach(drawPath)
     }
 
     function drawPath(path, index) {
