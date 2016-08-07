@@ -1,1 +1,1 @@
-require('tribe').start({ scopes: ['gameId'] });
+require('tribe').start({ scopes: ['gameId'], logLevel: 'silly' });
