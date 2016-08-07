@@ -6,6 +6,7 @@
     height: 40px;
     border-bottom: 1px solid black;
     background: #3498db;
+    z-index: 100;
 }
 
 .toolbar .left {

@@ -1,4 +1,4 @@
-<div data-bind="foreach: envelopes.players()" class="score">
+<div data-bind="foreach: envelopes.players()" class="score clientHeight">
     <a class="button" data-bind="click: $root.publish('point', { playerId: key })">
         <span data-bind="text: selectedName()"></span>
         <span data-bind="text: points()"></span>
