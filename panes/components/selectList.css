@@ -3,7 +3,8 @@
     padding: 10px;
     border: 1px solid #2980b9;
     margin: -1px;
-    box-shadow: 0px 0px 5px #2980b9;}
+    box-shadow: 0px 0px 5px #2980b9;
+}
 
 .itemSelected li {
     max-height: 0;

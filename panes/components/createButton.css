@@ -11,7 +11,7 @@
     border-bottom: 1px solid white;
 }
 
-.createButton.content {
+.createButton.dropdown > div {
     position: absolute;
     width: 100%;
     left: 0;
@@ -19,18 +19,18 @@
     box-sizing: border-box;
 }
 
-.createButton.content > div {
+.createButton.dropdown > div {
     max-height: 0;
     transition: max-height 0.5s; 
     overflow: hidden;
     background: white;
 }
 
-.createButton.content > div > div {
+.createButton.dropdown > div > div {
     padding: 5px;
 }
 
-.createButton.content.expanded > div {
+.createButton.dropdown.expanded > div {
     border: 1px solid black;
     max-height: 100px;
 }

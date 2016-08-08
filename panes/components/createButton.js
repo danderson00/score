@@ -2,6 +2,7 @@ require('tribe').register.model(function (pane) {
     $(pane.element).css('display', 'inline-block')
 
     this.toggle = () => {
+        pane.model.isValid.reset()
         var elements = pane.find('.createButton')
         if(elements.hasClass('expanded'))
             elements.removeClass('expanded')
@@ -10,12 +11,14 @@ require('tribe').register.model(function (pane) {
     }
 
     this.create = () => {
-        var data = {};
-        data[pane.data.valueProperty] = this.fields.value()
-        data[pane.data.idProperty] = this.uuid()
+        if(pane.model.isValid()) {
+            var data = {};
+            data[pane.data.valueProperty] = this.fields.value()
+            data[pane.data.idProperty] = this.uuid()
 
-        pane.pubsub.publish('player.name', data) 
-        this.toggle()
-        this.fields.value('')
+            pane.pubsub.publish('player.name', data) 
+            this.toggle()
+            this.fields.value('')
+        }
     }
 })
