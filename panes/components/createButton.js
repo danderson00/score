@@ -2,12 +2,13 @@ require('tribe').register.model(function (pane) {
     $(pane.element).css('display', 'inline-block')
 
     this.toggle = () => {
-        pane.model.isValid.reset()
         var elements = pane.find('.createButton')
         if(elements.hasClass('expanded'))
             elements.removeClass('expanded')
         else
             elements.addClass('expanded')
+        this.fields.value('')
+        pane.model.isValid.reset()
     }
 
     this.create = () => {
@@ -18,7 +19,6 @@ require('tribe').register.model(function (pane) {
 
             pane.pubsub.publish('player.name', data) 
             this.toggle()
-            this.fields.value('')
         }
     }
 })
