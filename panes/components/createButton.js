@@ -12,13 +12,11 @@ require('tribe').register.model(function (pane) {
     }
 
     this.create = () => {
-        if(pane.model.isValid()) {
-            var data = {};
-            data[pane.data.valueProperty] = this.fields.value()
-            data[pane.data.idProperty] = this.uuid()
+        var data = {};
+        data[pane.data.valueProperty] = this.fields.value()
+        data[pane.data.idProperty] = this.uuid()
 
-            pane.pubsub.publish('player.name', data) 
-            this.toggle()
-        }
+        pane.pubsub.publish('player.name', data) 
+        this.toggle()
     }
 })
