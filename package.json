@@ -1,9 +1,16 @@
 {
+  "name": "score",
+  "version": "0.0.1",
+  "description": "This is a sample application built on the tribe platform",
+  "scripts": {
+    "start": "node --debug server"
+  },
   "dependencies": {
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
     "d3": "^4.2.1",
     "deep-equal": "^1.0.1",
     "node-uuid": "^1.4.7",
-    "tribe": "^0.4.3"
-  }
+    "tribe": "^0.4.6"
+  },
+  "license": "MIT"
 }
