@@ -1,5 +1,5 @@
 <div class="selectList">
-    <ul data-bind="foreach: messages">
+    <ul data-bind="foreach: messages, validationElement: value">
         <li data-bind="text: $data[$root.itemText], click: $root.selectItem"></li>
     </ul>
 </div>

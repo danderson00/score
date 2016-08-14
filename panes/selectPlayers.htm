@@ -7,7 +7,7 @@
         <div data-bind="pane: 'components/createButton', data: { idProperty: 'playerId', valueProperty: 'name', topic: 'player.name' }, resetScope: true"></div>
     </h1>
     <div data-bind="arrayField: value, length: $root.fields.playerCount">
-        <div data-bind="pane: 'components/selectList', data: { value: value, itemText: 'name' }, scope: { topic: 'player.name' }, resetScope: true"></div>
+        <div data-bind="pane: 'components/selectList', data: { value: value, itemText: 'name', required: true }, scope: { topic: 'player.name' }, resetScope: true"></div>
     </div>
 </div>
 

@@ -1,5 +1,9 @@
 require('tribe').register.model(function (pane) {
     this.itemText = pane.data.itemText
+    this.value = pane.data.value
+
+    if(pane.data.required)
+        this.value.extend({ required: true })
 
     this.selectItem = (item, event) => {
         var currentValue = pane.data.value()
