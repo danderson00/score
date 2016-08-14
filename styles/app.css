@@ -101,3 +101,9 @@ div.twoColumn {
     text-align: center;
     width: 49%;
 }
+
+.centered * {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
