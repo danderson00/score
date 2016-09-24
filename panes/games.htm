@@ -1,7 +1,7 @@
 <h1>Games</h1>
 
 <ul data-bind="foreach: envelopes.games()">
-    <li data-bind="foreach: players(), click: $root.publish('ui.score', { gameId: key })">
+    <li data-bind="foreach: allPlayers(), click: $root.publish('ui.score', { gameId: key })">
         <div class="twoColumn">
             <span data-bind="text: selectedName()"></span><br />
             <span data-bind="text: points()"></span>

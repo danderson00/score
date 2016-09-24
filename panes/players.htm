@@ -1,6 +1,5 @@
 <h1>Players</h1>
-<!--<div data-bind="pane: 'graph', data: { groups: x => x.players(), values: x => x.gamesPlayed() / x.wins() }"></div>-->
-<div data-bind="pane: 'graph', data: { type: 'time', groups: x => x.players(), values: average }"></div>
+<div data-bind="pane: 'graph', data: { type: 'time', groups: x => x.allPlayers(), values: x => x.averageWins(x.key) }"></div>
 <table>
     <thead>
         <tr>
@@ -13,7 +12,7 @@
         <tr>
             <td data-bind="text: playerName()"></td>
             <td data-bind="text: gamesPlayed()"></td>
-            <td data-bind="text: wins()"></td>
+            <td data-bind="text: wins(key)"></td>
         </tr>
     </tbody>
 </table>

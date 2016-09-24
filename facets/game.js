@@ -2,17 +2,20 @@ require('tribe').register.facet(function (facet) {
     facet.isDistributed()
     
     this.lead = facet.envelopes.lead().asScalar()
+    this.playerIds = facet.envelopes.allPlayers().select(x => x.key).asArray()
+    this.winner = ko.observable()
 
-    // publish a game.won message when a player has
-    // 3 or more points and a lead of 2 or more points
+    // set the winner when a player has 3 or more points and a lead of 2 or more points
     facet.envelopes.players()
         .forEach(player => player.points()
             .when(points => points >= 3 && this.lead() >= 2)
-            .then(() => facet.publish('game.won', { playerId: player.key })))
+            .then(() => this.winner(player.key)))
+        
+    this.winner.subscribe(winner => facet.publish('game.over', { playerId: this.playerIds(), winner: winner }))
 
-    facet.handles('points', function (data) {
+    facet.handles('points', (data) => {
         data.forEach(x => facet.publish({ topic: 'point', data: x, silent: true }))
-        if(data[0].count > data[1].count) facet.publish('game.won', { playerId: data[0].playerId })        
-        if(data[0].count < data[1].count) facet.publish('game.won', { playerId: data[1].playerId })        
+        if(this.winner())
+            facet.publish('game.over', { playerId: this.playerIds(), winner: this.winner() })
     })
 })
