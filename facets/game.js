@@ -14,11 +14,4 @@ require('tribe').register.facet(function (facet) {
     
     // publish the game.over event when the winner observable is set
     this.winner.subscribe(winner => facet.publish('game.over', { playerId: this.playerIds(), winner: winner }))
-
-    // this handles scoring a game by specifying the outcome, i.e. number of points per player, in a single message
-    facet.handles('points', (data) => {
-        data.forEach(x => facet.publish({ topic: 'point', data: x, silent: true }))
-        if(this.winner())
-            facet.publish('game.over', { playerId: this.playerIds(), winner: this.winner() })
-    })
 })
