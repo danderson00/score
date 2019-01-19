@@ -1,14 +1,11 @@
-<input type="hidden" data-bind="field: 'playerCount'" value="1" />
-<div data-bind="pane: 'components/optionButtons', data: { values: { 'Singles': '1', 'Doubles': '2' }, value: fields.playerCount }"></div>
-
 <div data-bind="arrayField: 'teams', length: 2">
     <h1>
         Select Team <span data-bind="text: index + 1"></span>
         <div data-bind="pane: 'components/createButton', data: { idProperty: 'playerId', valueProperty: 'name', topic: 'player.name' }, resetScope: true"></div>
     </h1>
-    <div data-bind="arrayField: value, length: $root.fields.playerCount">
+    <div data-bind="arrayField: value, length: 1">
         <div data-bind="pane: 'components/selectList', data: { value: value, itemText: 'name', required: true }, scope: { topic: 'player.name' }, resetScope: true"></div>
     </div>
 </div>
 
-<a class="full button" data-bind="click: score, validate: true">Point by Point Scoring</a>
+<a class="full button" data-bind="click: score, validate: true">Score</a>
